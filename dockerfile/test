@@ -1,0 +1,12 @@
+############################################################
+# Dockerfile
+############################################################
+FROM ymazieres/dotnet:compile
+
+ENV ASPNETCORE_URLS http://+:5000
+
+CMD ["sh", "/scripts/testAndPublish.sh"]
+COPY /scripts/testAndPublish.sh /scripts/testAndPublish.sh
+RUN chmod +x /scripts/testAndPublish.sh
+COPY /src /src
+WORKDIR /src
